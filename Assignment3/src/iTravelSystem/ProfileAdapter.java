@@ -29,24 +29,26 @@ public class ProfileAdapter {
                 // Create the table of teams
                 stmt.execute("CREATE TABLE Profile ("
                         //+ "UserNumber INT, "
-                        + "FirstName CHAR(15) NOT NULL PRIMARY KEY," + "LastName CHAR(15) NOT NULL PRIMARY KEY, "
+                        + "FirstName CHAR(15) NOT NULL PRIMARY KEY,"
+                        + "LastName CHAR(15) NOT NULL"
                         + ")");
-                //populateSampls();
+                populateSampls();
             }
         }
     }
 
-    /* private void populateSampls() throws SQLException {
+    private void populateSampls() throws SQLException {
 
-        this.insertProfile("User1");
-        this.insertProfile("User2");
-        this.insertProfile("User3");
-        this.insertProfile("User4");
+        this.insertProfile("Bob","Dylan");
+        this.insertProfile("Kanye","West");
+        this.insertProfile("Paul","Mccartney");
+        this.insertProfile("Young","Thug");
     }
-*/
-    public void insertProfile(String firstName, String lastName) throws SQLException {
+
+    public void insertProfile(String nameFirst, String nameLast) throws SQLException {
         Statement stmt = connection.createStatement();
-        stmt.executeUpdate("INSERT INTO Profile (FirstName, LastName) VALUES ('" + firstName + "','" + lastName + "')");
+        stmt.executeUpdate("INSERT INTO Profile (FirstName, LastName)"
+                + " VALUES ('" + nameFirst + "','" + nameLast + "')");
 
         //stmt.executeUpdate("INSERT INTO Profile (UserNumber, FirstName, LastName) VALUES (0,'+ name + ', '+name+')");
     }
