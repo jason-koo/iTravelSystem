@@ -48,7 +48,7 @@ public class DisplayProfileController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
 
-            stage.getIcons().add(new Image("file:src/TennisBallGames/WesternLogo.png"));
+            //stage.getIcons().add(new Image("file:src/TennisBallGames/WesternLogo.png"));
             controller.setAlertText(msg);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
@@ -63,7 +63,7 @@ public class DisplayProfileController implements Initializable {
         try {
             data.addAll(profileAdapter.getProfileList());
         } catch (SQLException ex) {
-            //displayAlert("ERROR: "+ ex.getMessage());
+            displayAlert("ERROR: "+ ex.getMessage());
         }
     }
 

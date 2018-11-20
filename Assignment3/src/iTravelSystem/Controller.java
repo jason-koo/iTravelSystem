@@ -1,21 +1,19 @@
 package iTravelSystem;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.io.IOException;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
+import javafx.scene.image.Image;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class Controller implements Initializable {
 
@@ -42,6 +40,27 @@ public class Controller implements Initializable {
 
         stage.show();
     }
+
+    @FXML
+    public void addProfile() throws Exception {
+        // Toggle the comments below after you finish the requirement of Task #3
+        profile = new ProfileAdapter(conn, false);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddProfile.fxml"));
+        Parent addMatch = (Parent) fxmlLoader.load();
+        AddProfileController addMatchController = (AddProfileController) fxmlLoader.getController();
+        addMatchController.setProfile(profile);
+
+        Scene scene = new Scene(addMatch);
+        Stage stage = new Stage();
+
+        stage.setScene(scene);
+        //stage.getIcons().add(new Image("file:src/TennisBallGames/WesternLogo.png"));
+        stage.setTitle("Add New Profile");
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        stage.show();
+    }
+
     @FXML
     public void displayProfiles() throws Exception {
         // create Teams model
@@ -50,8 +69,8 @@ public class Controller implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DisplayProfiles.fxml"));
         Parent profiles = (Parent) fxmlLoader.load();
 
-        DisplayProfileController teamsStandingsController = (DisplayProfileController) fxmlLoader.getController();
-        teamsStandingsController.setModel(profile);
+        DisplayProfileController displayProfileController = (DisplayProfileController) fxmlLoader.getController();
+        displayProfileController.setModel(profile);
 
         Scene scene = new Scene(profiles);
         Stage stage = new Stage();
@@ -63,12 +82,14 @@ public class Controller implements Initializable {
 
         stage.show();
     }
+
     @FXML
-    /*public void exit() throws SQLException {
+    public void exit() throws SQLException {
         conn.close();
         Stage stage = (Stage) mainMenu.getScene().getWindow();
         stage.close();
-    }*/
+    }
+
     private void displayAlert(String msg) {
         try {
 

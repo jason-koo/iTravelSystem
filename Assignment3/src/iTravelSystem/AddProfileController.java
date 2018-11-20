@@ -1,4 +1,5 @@
 package iTravelSystem;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -15,6 +16,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.scene.control.ComboBox;
+
+
 public class AddProfileController implements Initializable {
 
 
@@ -32,7 +37,7 @@ public class AddProfileController implements Initializable {
 
     private ProfileAdapter profileAdapter;
 
-    public void setModel(ProfileAdapter profile) {
+    public void setProfile(ProfileAdapter profile) {
         profileAdapter = profile;
     }
 
@@ -45,7 +50,7 @@ public class AddProfileController implements Initializable {
     @FXML
     public void add() {
         try {
-            profileAdapter.insertProfile(firstNameBox.getText());
+            profileAdapter.insertProfile(firstNameBox.getText(),lastNameBox.getText());
         } catch (SQLException ex) {
             displayAlert("ERROR: " + ex.getMessage());
         }
