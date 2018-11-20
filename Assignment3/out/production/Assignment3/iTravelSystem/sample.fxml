@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iTravelSystem.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <BorderPane prefHeight="543.0" prefWidth="787.0">
+         <top>
+            <MenuBar fx:id="mainMenu" BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#exit" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Manage Profiles">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Add Profile" />
+                        <MenuItem mnemonicParsing="false" text="Modify Profile" />
+                        <MenuItem mnemonicParsing="false" text="Delete Profile" />
+                        <MenuItem fx:id="displayProfiles" mnemonicParsing="false" text="Display Profiles" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Flights">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Add Flight" />
+                        <MenuItem mnemonicParsing="false" text="Remove Flight" />
+                    </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="About Us">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#showAbout" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+      </BorderPane>
+   </children>
+</GridPane>
