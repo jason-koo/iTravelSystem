@@ -23,8 +23,10 @@ public class DisplayProfileController implements Initializable {
 
     @FXML
     private TableView<Profile> tableView;
+    /*
     @FXML
     private TableColumn<Profile, Integer> userNumberColumn;
+    */
     @FXML
     private TableColumn<Profile, String> firstNameColumn;
     @FXML
@@ -70,7 +72,7 @@ public class DisplayProfileController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        userNumberColumn.setCellValueFactory(cellData -> cellData.getValue().UserNumberProperty().asObject());
+        //userNumberColumn.setCellValueFactory(cellData -> cellData.getValue().UserNumberProperty().asObject());
         firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().FirstNameProperty());
         lastNameColumn.setCellValueFactory(cellData-> cellData.getValue().LastNameProperty());
 

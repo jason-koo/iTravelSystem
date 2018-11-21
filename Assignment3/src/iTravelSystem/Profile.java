@@ -7,21 +7,23 @@ import javafx.beans.property.StringProperty;
 
 public class Profile {
 
-    private final IntegerProperty UserNumber;
+    //private final IntegerProperty UserNumber;
     private final StringProperty FirstName;
     private final StringProperty LastName;
 
-    public Profile(int userNumber, String firstName, String lastName){
-        this.UserNumber = new SimpleIntegerProperty(userNumber);
+    public Profile(String firstName, String lastName){
+        //this.UserNumber = new SimpleIntegerProperty(userNumber);
         this.FirstName = new SimpleStringProperty(firstName);
         this.LastName = new SimpleStringProperty(lastName);
     }
+    /*
     public void setUserNumber(int userNumber) {UserNumber.set(userNumber); }
     public IntegerProperty UserNumberProperty() {
         return UserNumber;
     }
-    public int getUserNumber() {return UserNumber.get(); }
 
+    public int getUserNumber() {return UserNumber.get(); }
+*/
     public void setFirstName(String firstName) {FirstName.set(firstName); }
     public StringProperty FirstNameProperty() {
         return FirstName;

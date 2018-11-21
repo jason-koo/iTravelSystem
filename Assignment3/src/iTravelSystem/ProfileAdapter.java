@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class ProfileAdapter {
@@ -18,7 +19,7 @@ public class ProfileAdapter {
             try {
                 // Remove tables if database tables have been created.
                 // This will throw an exception if the tables do not exist
-                // We drop Matches first because it refrences the table Teams
+                // We drop Matches first because it references the table Teams
                 stmt.execute("DROP TABLE Profile");
                 // then do finally
             } catch (SQLException ex) {
@@ -27,7 +28,7 @@ public class ProfileAdapter {
                 // do finally to create it
             } finally {
                 // Create the table of teams
-                stmt.execute("CREATE TABLE Profile ("
+                stmt.execute("CREATE TABLE Profile (\n"
                         //+ "UserNumber INT, "
                         + "FirstName CHAR(15) NOT NULL PRIMARY KEY,"
                         + "LastName CHAR(15) NOT NULL"
@@ -46,6 +47,7 @@ public class ProfileAdapter {
     }
 
     public void insertProfile(String nameFirst, String nameLast) throws SQLException {
+        //line 51 is the problem statement?
         Statement stmt = connection.createStatement();
         stmt.executeUpdate("INSERT INTO Profile (FirstName, LastName)"
                 + " VALUES ('" + nameFirst + "','" + nameLast + "')");
@@ -68,13 +70,13 @@ public class ProfileAdapter {
         rs = stmt.executeQuery(sqlStatement);
 
         while (rs.next()) {
-            list.add(new Profile(rs.getInt("User#"),
+            list.add(new Profile(
                     rs.getString("FirstName"),
                     rs.getString("LastName")));
         }
         return list;
     }
-
+/*
     // Get all teams names to populate the ComboBoxs used in Task #3.
     public ObservableList<String> getTeamsNames() throws SQLException {
         ObservableList<String> list = FXCollections.observableArrayList();
@@ -89,6 +91,7 @@ public class ProfileAdapter {
         }
         return list;
     }
+    */
     // Create a Statement object
 
 
@@ -99,7 +102,7 @@ public class ProfileAdapter {
 
 
     // loop for the all rs rows and update list
-
+/*
 
     public void setStatus(String hTeam, String vTeam, int hScore, int vScore) throws SQLException {
         // Create a Statement object
@@ -109,5 +112,5 @@ public class ProfileAdapter {
         // Write your code here for Task #4
 
     }
-
+*/
 }

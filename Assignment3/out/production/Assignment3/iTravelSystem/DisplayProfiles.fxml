@@ -10,7 +10,6 @@
       <Label layoutX="249.0" layoutY="59.0" text="Current Profiles" />
       <TableView fx:id="tableView" layoutX="12.0" layoutY="122.0" prefHeight="257.0" prefWidth="573.0">
         <columns>
-          <TableColumn fx:id="userNumberColumn" prefWidth="75.0" text="User#" />
           <TableColumn fx:id="firstNameColumn" prefWidth="236.0" text="First Name" />
             <TableColumn fx:id="lastNameColumn" prefWidth="261.0" text="Last Name" />
         </columns>

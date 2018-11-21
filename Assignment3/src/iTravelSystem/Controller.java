@@ -3,6 +3,7 @@ package iTravelSystem;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 public class Controller implements Initializable {
 
     private ProfileAdapter profile;
+    private FlightsAdapter flights;
     private Connection conn;
 
     @FXML
@@ -56,6 +58,26 @@ public class Controller implements Initializable {
         stage.setScene(scene);
         //stage.getIcons().add(new Image("file:src/TennisBallGames/WesternLogo.png"));
         stage.setTitle("Add New Profile");
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        stage.show();
+    }
+
+    @FXML
+    public void addFlights() throws Exception {
+        // Toggle the comments below after you finish the requirement of Task #3
+        flights = new FlightsAdapter(conn, false);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddFlights.fxml"));
+        Parent addMatch = (Parent) fxmlLoader.load();
+        AddFlightsController addFlightsController = (AddFlightsController) fxmlLoader.getController();
+        addFlightsController.setFlights(flights);
+
+        Scene scene = new Scene(addMatch);
+        Stage stage = new Stage();
+
+        stage.setScene(scene);
+        //stage.getIcons().add(new Image("file:src/TennisBallGames/WesternLogo.png"));
+        stage.setTitle("Add New Flights");
         stage.initModality(Modality.APPLICATION_MODAL);
 
         stage.show();
@@ -113,5 +135,13 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        try {
+            String DB_URL = "jdbc:derby:ProfileDB;create=true";
+
+            conn = DriverManager.getConnection(DB_URL);
+
+        } catch (SQLException ex) {
+            displayAlert(ex.getMessage());
+        }
     }
 }
