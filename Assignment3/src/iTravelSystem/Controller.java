@@ -84,6 +84,28 @@ public class Controller implements Initializable {
     }
 
     @FXML
+    public void removeFlights() throws Exception {
+        flights = new FlightsAdapter(conn, false);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RemoveFlights.fxml"));
+        Parent flight = (Parent) fxmlLoader.load();
+
+        RemoveFlightsController removeFlightsController = (RemoveFlightsController) fxmlLoader.getController();
+        removeFlightsController.setModel(flights);
+
+        Scene scene = new Scene(flight);
+        Stage stage = new Stage();
+
+        stage.setScene(scene);
+        //stage.getIcons().add(new Image("file:src/TennisBallGames/WesternLogo.png"));
+        stage.setTitle("Remove Flights");
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        stage.show();
+    }
+
+
+    @FXML
     public void displayProfiles() throws Exception {
         // create Teams model
         profile = new ProfileAdapter(conn, false);

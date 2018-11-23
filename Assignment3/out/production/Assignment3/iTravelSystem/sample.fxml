@@ -36,7 +36,7 @@
                   <Menu mnemonicParsing="false" text="Flights">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#addFlights" text="Add Flight" />
-                        <MenuItem mnemonicParsing="false" text="Remove Flight" />
+                        <MenuItem mnemonicParsing="false" onAction="#removeFlights" text="Remove Flight" />
                     </items>
                   </Menu>
                 <Menu mnemonicParsing="false" text="About Us">

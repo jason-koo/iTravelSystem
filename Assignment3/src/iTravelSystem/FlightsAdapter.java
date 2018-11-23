@@ -62,6 +62,11 @@ public class FlightsAdapter {
         //stmt.executeUpdate("INSERT INTO Profile (UserNumber, FirstName, LastName) VALUES (0,'+ name + ', '+name+')");
     }
 
+    public void removeFlights(int flightNumberInput) throws SQLException {
+        Statement stmt = connection.createStatement();
+        stmt.executeUpdate("DELETE FROM Flights WHERE flightNumber = '" + flightNumberInput + "' ");
+    }
+
     public ObservableList<Flights> getFlightsList() throws SQLException {
         ObservableList<Flights> list = FXCollections.observableArrayList();
         ResultSet rs;

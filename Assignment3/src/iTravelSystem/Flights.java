@@ -49,6 +49,8 @@ public class Flights {
     private final IntegerProperty aircraftNumber;
     private final IntegerProperty seatCapacity;
 
+    //public Flights(int flightNumber) { this.flightNumber = new SimpleIntegerProperty(flightNumber);}
+
     public Flights(int flightNumber, String origin, String destination, String departTime, String flightTime,
                    String aircraft, int aircraftNumber, int seatCapacity)
     {
