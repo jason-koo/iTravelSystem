@@ -3,11 +3,7 @@ package iTravelSystem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ProfileAdapter {
     Connection connection;
@@ -54,6 +50,18 @@ public class ProfileAdapter {
 
         //stmt.executeUpdate("INSERT INTO Profile (UserNumber, FirstName, LastName) VALUES (0,'+ name + ', '+name+')");
     }
+
+    public void removeProfile(String lastName) throws SQLException {
+        Statement stmt = connection.createStatement();
+        String sql = "DELETE FROM Profile WHERE LastName=?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        //this next line will replace the ? in the above SQL statement
+        ps.setString(1, lastName);
+        ps.executeUpdate();
+
+        //stmt.executeUpdate("DELETE FROM Flights WHERE flightNumber = '" + flightNumberInput + "' ");
+    }
+
 
     // Get all teams Data
     public ObservableList<Profile> getProfileList() throws SQLException {

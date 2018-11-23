@@ -104,6 +104,27 @@ public class Controller implements Initializable {
         stage.show();
     }
 
+    @FXML
+    public void removeProfile() throws Exception {
+        profile = new ProfileAdapter(conn, false);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RemoveProfile.fxml"));
+        Parent profiles = (Parent) fxmlLoader.load();
+
+        RemoveProfileController removeProfileController = (RemoveProfileController) fxmlLoader.getController();
+        removeProfileController.setModel(profile);
+
+        Scene scene = new Scene(profiles);
+        Stage stage = new Stage();
+
+        stage.setScene(scene);
+        //stage.getIcons().add(new Image("file:src/TennisBallGames/WesternLogo.png"));
+        stage.setTitle("Remove Profile");
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        stage.show();
+    }
+
 
     @FXML
     public void displayProfiles() throws Exception {

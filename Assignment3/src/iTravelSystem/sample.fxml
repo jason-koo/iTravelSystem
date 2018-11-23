@@ -29,7 +29,7 @@
                   <items>
                     <MenuItem mnemonicParsing="false" onAction="#addProfile" text="Add Profile" />
                         <MenuItem mnemonicParsing="false" text="Modify Profile" />
-                        <MenuItem mnemonicParsing="false" text="Delete Profile" />
+                        <MenuItem mnemonicParsing="false" onAction="#removeProfile" text="Delete Profile" />
                         <MenuItem fx:id="displayProfiles" mnemonicParsing="false" onAction="#displayProfiles" text="Display Profiles" />
                   </items>
                 </Menu>

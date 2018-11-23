@@ -3,11 +3,7 @@ package iTravelSystem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
 
 public class FlightsAdapter {
     Connection connection;
@@ -64,7 +60,13 @@ public class FlightsAdapter {
 
     public void removeFlights(int flightNumberInput) throws SQLException {
         Statement stmt = connection.createStatement();
-        stmt.executeUpdate("DELETE FROM Flights WHERE flightNumber = '" + flightNumberInput + "' ");
+        String sql = "DELETE FROM Flights WHERE FlightNumber=?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        //this next line will replace the ? in the above SQL statement
+        ps.setInt(1, flightNumberInput);
+        ps.executeUpdate();
+
+        //stmt.executeUpdate("DELETE FROM Flights WHERE flightNumber = '" + flightNumberInput + "' ");
     }
 
     public ObservableList<Flights> getFlightsList() throws SQLException {
